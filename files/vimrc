@@ -1,0 +1,58 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" Vundle 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Plugins
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-surround'
+Plugin 'mattn/emmet-vim'
+"Plugin 'StanAngeloff/php.vim'
+
+" All of your Plugins before this line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Open NERDTree
+autocmd vimenter * NERDTree
+
+"show numbers
+set number
+set relativenumber
+" Colum Limit
+set colorcolumn=81
+"show existing tab with 2 spaces width
+set tabstop=2
+"when indenting with '>', use 2 spaces width
+set shiftwidth=2
+"On pressing tab, insert 2 spaces
+set expandtab
+"Syntax helper / colors and so on
+syntax on
+
+" Map ctrl+i to vertical resize 110
+nmap <c-i> :vertical resize 110<CR>
+" Map ; to : - just one key
+nnoremap ; :
+" Map Autocomplete braces
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+" Map Autocomplete Square brackets
+inoremap [      []<Left>
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap [[     [
+inoremap []     []
+" Map Autocomplete Parentheses
+inoremap        (  ()<Left>
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+" Map Single Quotes
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+" Map Double Quotes
+inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
