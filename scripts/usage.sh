@@ -1,3 +1,5 @@
+#!/bin/bash
+
 printf "\nUsage: set-environment.sh COMMAND\n"
 printf "Tool for set up Flavio's Dev Environment\n\n\n"
 
