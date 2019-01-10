@@ -4,37 +4,50 @@
 chmod +x scripts/*.sh
 
 # Check parameters
-if [ "$#" -lt 1 -o "$#" -gt 2 ]
+if [ "$#" -lt 1 -o "$#" -gt 3 ]
 then
   ./scripts/usage.sh
   exit
 fi
 
-# Checking second paramenter
-if [ "$#" -eq 2 -a "$2" != "-f" ]
-then
-  printf "SetEnvironment: Second parameter unknow.\n"
-fi
-
 # There are some parameters, so lets check them
 case $1 in
 
-install) 
+install)
 
-  if [ -e ~/.vimrc -a "$2" != "-f" ]
-  then
-    printf "You already have a .vimrc file in your home folder!\nUse -f to force an update! Use the --vimrc option if you just want to update the vimrc file.\n" 
-  else
+  case $2 in
+
+  --vim)
+    ./scripts/vim-config.sh 
+  ;;
+  
+  --brew)
+    printf "Installing Homebrew...\n"
+  ;;
+
+  *)
+    printf "Installing...\n\n"
     ./scripts/vim-config.sh
-  fi
+  ;;
+
+  esac
 
 ;;
 
 remove)
-  printf "Removing...\n"
-  # .vimrc
-  rm -rf ~/.vimrc
-  printf ".vimrc file removed!\n"
+
+  case $2 in
+  
+  --vim)
+    ./scripts/remove-vim-config.sh
+  ;;
+
+  *)
+    printf "Removing...\n\n"
+    ./scripts/remove-vim-config.sh
+  ;;
+
+  esac
 ;;
 
 *) 
