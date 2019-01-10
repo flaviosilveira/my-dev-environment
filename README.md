@@ -9,6 +9,7 @@ After clone the project just execute the set-environment.sh for instructions.
 ### Prerequisites
 
 Just make sure you are able to do a git clone command.
+You will also need to be able to execute some basic terminal commands like ls, cp, chmod and so on...
 
 ### Installing
 
