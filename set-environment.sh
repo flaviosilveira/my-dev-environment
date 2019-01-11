@@ -18,7 +18,7 @@ install)
   case $2 in
 
   --vim)
-    ./scripts/vim-config.sh 
+    ./scripts/vim-config.sh "${@: -1}"
   ;;
   
   --brew)

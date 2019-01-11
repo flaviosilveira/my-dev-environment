@@ -1,11 +1,6 @@
 #!/bin/bash
 
-args="$@"
-last=${args##* }
-echo $last
-exit
-
-if [ -e ~/.vimrc -a "$last" != "-f" ]
+if [ -e ~/.vimrc -a "$1" != "-f" ]
 then
   printf "Oops! You already have a .vimrc file in your home folder!\nUse -f as last parameter to force an update! Use the --vimrc option if you just want to update the vimrc file.\n\n" 
 else
