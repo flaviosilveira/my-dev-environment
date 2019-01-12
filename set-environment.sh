@@ -22,12 +22,13 @@ install)
   ;;
   
   --brew)
-    printf "Installing Homebrew...\n"
+    ./scripts/brew.sh "${@: -1}"
   ;;
 
   *)
     printf "Installing...\n\n"
-    ./scripts/vim-config.sh
+    ./scripts/vim-config.sh "${@: -1}"
+    ./scripts/brew.sh "${@: -1}"
   ;;
 
   esac
@@ -42,9 +43,14 @@ remove)
     ./scripts/remove-vim-config.sh
   ;;
 
+  --brew)
+    ./scripts/remove-brew.sh
+  ;;
+
   *)
     printf "Removing...\n\n"
     ./scripts/remove-vim-config.sh
+    ./scripts/remove-brew.sh
   ;;
 
   esac
