@@ -2,9 +2,23 @@
 
 Simple script to install, update or remove my development environment.
 
+- My Vimrc config
+- Vundle
+- Vim Plugins (Nerdtree, Airline, Surround, Emmet)
+- Homebrew
+- Mysql (Homebrew)
+
 ## Getting Started
 
-After clone the project just execute the set-environment.sh for instructions.
+### Install
+./set-environment.sh install
+**Use -f as last parameter to force re-install**
+
+### Remove
+./set-environment.sh remove
+
+### Just one option
+Example: ./set-environment.sh remove --brew
 
 ### Prerequisites
 
