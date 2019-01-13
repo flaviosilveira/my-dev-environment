@@ -20,7 +20,11 @@ install)
   --vim)
     ./scripts/vim-config.sh "${@: -1}"
   ;;
-  
+
+  --docker)
+    ./scripts/docker.sh "${@: -1}"
+  ;;
+
   --brew)
     ./scripts/brew.sh "${@: -1}"
   ;;
@@ -32,6 +36,7 @@ install)
   *)
     printf "Installing...\n\n"
     ./scripts/vim-config.sh "${@: -1}"
+    ./scripts/docker.sh "${@: -1}"
     ./scripts/brew.sh "${@: -1}"
     ./scripts/mysql.sh "${@: -1}"
   ;;
@@ -48,6 +53,10 @@ remove)
     ./scripts/remove-vim-config.sh
   ;;
 
+  --docker)
+    ./scripts/remove-docker.sh
+  ;;
+
   --brew)
     ./scripts/remove-brew.sh
   ;;
@@ -59,6 +68,7 @@ remove)
   *)
     printf "Removing...\n\n"
     ./scripts/remove-vim-config.sh
+    ./scripts/remove-docker.sh
     ./scripts/remove-brew.sh
     ./scripts/remove-mysql.sh
   ;;
