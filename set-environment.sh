@@ -25,10 +25,15 @@ install)
     ./scripts/brew.sh "${@: -1}"
   ;;
 
+  --mysql)
+    ./scripts/mysql.sh "${@: -1}"
+  ;;
+
   *)
     printf "Installing...\n\n"
     ./scripts/vim-config.sh "${@: -1}"
     ./scripts/brew.sh "${@: -1}"
+    ./scripts/mysql.sh "${@: -1}"
   ;;
 
   esac
@@ -47,10 +52,15 @@ remove)
     ./scripts/remove-brew.sh
   ;;
 
+  --mysql)
+    ./scripts/remove-mysql.sh
+  ;;
+
   *)
     printf "Removing...\n\n"
     ./scripts/remove-vim-config.sh
     ./scripts/remove-brew.sh
+    ./scripts/remove-mysql.sh
   ;;
 
   esac

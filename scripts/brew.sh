@@ -13,6 +13,7 @@ else
 
   printf "Installing Homebrew...\n"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  printf "Homebrew Installed!\n"
 
 fi
 
