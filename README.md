@@ -9,7 +9,6 @@ Simple script to install, update or remove my development environment.
 * Mysql (Homebrew)
 * Docker 
 * Git Shortcuts
-  * gc - git clone
   * gs - git status
   * ga - git add
   * gc - git commit
