@@ -2,11 +2,18 @@
 
 Simple script to install, update or remove my development environment.
 
-- My Vimrc config
-- Vundle
-- Vim Plugins (Nerdtree, Airline, Surround, Emmet)
-- Homebrew
-- Mysql (Homebrew)
+* My Vimrc config
+* Vundle
+* Vim Plugins (Nerdtree, Airline, Surround, Emmet)
+* Homebrew
+* Mysql (Homebrew)
+* Docker 
+* Git Shortcuts
+  * gc - git clone
+  * gs - git status
+  * ga - git add
+  * gc - git commit
+  * gpo - git push origin master
 
 ## Getting Started
 
@@ -22,10 +29,12 @@ Example: ./set-environment.sh remove --brew
 
 ### Prerequisites
 
-Just make sure you are able to do a git clone command.
+Make sure you are able to do a git clone command.
 You will also need to be able to execute some basic terminal commands like ls, cp, chmod and so on...
 
 Follow the outputs in the screen! Maybe script requests your password.
+
+Git Shortcuts are based in Bash, using your .bash_profile file.
 
 ### Installing
 
