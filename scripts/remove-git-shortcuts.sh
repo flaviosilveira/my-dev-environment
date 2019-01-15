@@ -17,7 +17,3 @@ sed -i '' '/git add/d' ~/.bash_profile
 sed -i '' '/git commit/d' ~/.bash_profile
 sed -i '' '/git push origin master/d' ~/.bash_profile
 printf "Git Shortcuts are gone\n\n"
-
-printf "Reloading .bash_profile\n"
-source ~/.bash_profile
-printf "Done!\n\n"

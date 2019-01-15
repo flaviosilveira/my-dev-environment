@@ -28,7 +28,4 @@ else
   echo "alias gpom='git push origin master'" >> ~/.bash_profile
   printf "Shortcuts created!\n\n"
 
-  printf "Reloading .bash_profile\n"
-  source ~/.bash_profile
-  printf "Done!\n\n"
 fi
