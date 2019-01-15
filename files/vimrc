@@ -21,6 +21,9 @@ filetype plugin indent on    " required
 " Open NERDTree
 autocmd vimenter * NERDTree
 
+" NERDTree delimiter
+let g:NERDTreeNodeDelimiter = "\u00a0"
+
 "show numbers
 set number
 set relativenumber
