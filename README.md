@@ -12,7 +12,7 @@ Simple script to install, update or remove my development environment.
   * gs - git status
   * ga - git add
   * gc - git commit
-  * gpo - git push origin master
+  * gpom - git push origin master
 
 ## Getting Started
 
