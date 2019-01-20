@@ -14,6 +14,7 @@ printf "Removing git shortcuts..."
 sed -i '' '/Git Shortcuts/d' ~/.bash_profile
 sed -i '' '/git status/d' ~/.bash_profile
 sed -i '' '/git add/d' ~/.bash_profile
+sed -i '' '/git diff/d' ~/.bash_profile
 sed -i '' '/git commit/d' ~/.bash_profile
 sed -i '' '/git push origin master/d' ~/.bash_profile
 printf "Git Shortcuts are gone\n\n"
