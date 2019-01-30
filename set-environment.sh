@@ -33,6 +33,10 @@ install)
     ./scripts/mysql.sh "${@: -1}"
   ;;
 
+  --gnusoftwares)
+    ./scripts/gnusoftwares.sh "${@: -1}"
+  ;;
+
   --gitshortcuts)
     ./scripts/git-shortcuts.sh "${@: -1}"
   ;;
@@ -47,6 +51,7 @@ install)
     ./scripts/brew.sh "${@: -1}"
     ./scripts/docker.sh "${@: -1}"
     ./scripts/mysql.sh "${@: -1}"
+    ./scripts/gnusoftwares.sh "${@: -1}"
     ./scripts/git-shortcuts.sh "${@: -1}"
     ./scripts/show-git-branch.sh "${@: -1}"
   ;;
@@ -70,6 +75,10 @@ remove)
   --mysql)
     ./scripts/remove-mysql.sh
   ;;
+  
+  --gnusoftwares)
+    ./scripts/remove-gnusoftwares.sh
+  ;;
 
   --brew)
     ./scripts/remove-brew.sh
@@ -88,6 +97,7 @@ remove)
     ./scripts/remove-vim-config.sh
     ./scripts/remove-docker.sh
     ./scripts/remove-mysql.sh
+    ./scripts/remove-gnusoftwares.sh
     ./scripts/remove-brew.sh
     ./scripts/remove-git-shortcuts.sh
     ./scripts/remove-show-git-branch.sh
