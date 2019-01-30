@@ -45,6 +45,10 @@ install)
     ./scripts/show-git-branch.sh "${@: -1}"
   ;;
 
+  --bashshortcuts)
+    ./scripts/bash-shortcuts.sh "${@: -1}"
+  ;;
+
   *)
     printf "Installing...\n\n"
     ./scripts/vim-config.sh "${@: -1}"
@@ -54,6 +58,7 @@ install)
     ./scripts/gnusoftwares.sh "${@: -1}"
     ./scripts/git-shortcuts.sh "${@: -1}"
     ./scripts/show-git-branch.sh "${@: -1}"
+    ./scripts/bash-shortcuts.sh "${@: -1}"
   ;;
 
   esac
@@ -92,6 +97,10 @@ remove)
     ./scripts/remove-show-git-branch.sh
   ;;
 
+  --bashshortcuts)
+    ./scripts/remove-bash-shortcuts.sh
+  ;;
+
   *)
     printf "Removing...\n\n"
     ./scripts/remove-vim-config.sh
@@ -101,6 +110,7 @@ remove)
     ./scripts/remove-brew.sh
     ./scripts/remove-git-shortcuts.sh
     ./scripts/remove-show-git-branch.sh
+    ./scripts/remove-bash-shortcuts.sh
   ;;
 
   esac
