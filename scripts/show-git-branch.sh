@@ -27,7 +27,7 @@ else
   echo "  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'" >> ~/.bash_profile
   echo "}" >> ~/.bash_profile
   echo "" >> ~/.bash_profile
-  echo "export PS1=\"\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ \"" >> ~/.bash_profile
+  echo "export PS1=\"\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ \"" >> ~/.bash_profile
   printf "Parse git branch created!\n\n"
 
 fi
