@@ -24,9 +24,11 @@ autocmd vimenter * NERDTree
 " NERDTree delimiter
 let g:NERDTreeNodeDelimiter = "\u00a0"
 
-"show numbers
+"set configs
 set number
 set relativenumber
+set showcmd
+set ignorecase
 " Colum Limit
 set colorcolumn=81
 "show existing tab with 2 spaces width
