@@ -25,6 +25,10 @@ install)
     ./scripts/brew.sh "${@: -1}"
   ;;
 
+  --brewsoftwares)
+    ./scripts/brew-softwares.sh "${@: -1}"
+  ;;
+
   --docker)
     ./scripts/docker.sh "${@: -1}"
   ;;
@@ -34,7 +38,7 @@ install)
   ;;
 
   --gnusoftwares)
-    ./scripts/gnusoftwares.sh "${@: -1}"
+    ./scripts/gnu-softwares.sh "${@: -1}"
   ;;
 
   --gitshortcuts)
@@ -53,9 +57,10 @@ install)
     printf "Installing...\n\n"
     ./scripts/vim-config.sh "${@: -1}"
     ./scripts/brew.sh "${@: -1}"
+    ./scripts/brew-softwares.sh "${@: -1}"
     ./scripts/docker.sh "${@: -1}"
     ./scripts/mysql.sh "${@: -1}"
-    ./scripts/gnusoftwares.sh "${@: -1}"
+    ./scripts/gnu-softwares.sh "${@: -1}"
     ./scripts/git-shortcuts.sh "${@: -1}"
     ./scripts/show-git-branch.sh "${@: -1}"
     ./scripts/bash-shortcuts.sh "${@: -1}"
@@ -82,7 +87,11 @@ remove)
   ;;
   
   --gnusoftwares)
-    ./scripts/remove-gnusoftwares.sh
+    ./scripts/remove-gnu-softwares.sh
+  ;;
+
+  --brewsoftwares)
+    ./scripts/remove-brew-softwares.sh
   ;;
 
   --brew)
@@ -106,7 +115,8 @@ remove)
     ./scripts/remove-vim-config.sh
     ./scripts/remove-docker.sh
     ./scripts/remove-mysql.sh
-    ./scripts/remove-gnusoftwares.sh
+    ./scripts/remove-gnu-softwares.sh
+    ./scripts/remove-brew-softwares.sh
     ./scripts/remove-brew.sh
     ./scripts/remove-git-shortcuts.sh
     ./scripts/remove-show-git-branch.sh

@@ -12,6 +12,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'StanAngeloff/php.vim'
 
 " All of your Plugins before this line
@@ -20,6 +21,11 @@ filetype plugin indent on    " required
 
 " Open NERDTree
 autocmd vimenter * NERDTree
+
+" CtrlP to use ripgrep as file finder
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+endif"
 
 " NERDTree delimiter
 let g:NERDTreeNodeDelimiter = "\u00a0"
