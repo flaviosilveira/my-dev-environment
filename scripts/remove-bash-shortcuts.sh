@@ -13,4 +13,5 @@ fi
 printf "Removing Bash shortcuts..."
 sed -i '' '/Bash Shortcuts/d' ~/.bash_profile
 sed -i '' '/ls -l/d' ~/.bash_profile
+sed -i '' '/vim/d' ~/.bash_profile
 printf "Bash Shortcuts are gone\n\n"

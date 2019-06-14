@@ -23,6 +23,7 @@ else
   echo "" >> ~/.bash_profile
   echo "## Bash Shortcuts ###" >> ~/.bash_profile
   echo "alias ll='ls -l'" >> ~/.bash_profile
+  echo "alias v='/usr/local/bin/vim'" >> ~/.bash_profile
   printf "Shortcuts created!\n\n"
 
 fi
