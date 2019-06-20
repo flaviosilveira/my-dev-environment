@@ -28,13 +28,14 @@ if executable('rg')
 endif"
 
 " NERDTree delimiter
-let g:NERDTreeNodeDelimiter = "\u00a0"
+set encoding=utf-8
 
 "set configs
 set number
 set relativenumber
 set showcmd
 set ignorecase
+set bs=2
 " Colum Limit
 set colorcolumn=81
 "show existing tab with 2 spaces width
