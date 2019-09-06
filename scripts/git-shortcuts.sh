@@ -26,7 +26,6 @@ else
   echo "alias ga='git add'" >> ~/.bash_profile
   echo "alias gd='git diff'" >> ~/.bash_profile
   echo "alias gc='git commit'" >> ~/.bash_profile
-  echo "alias gpom='git push origin master'" >> ~/.bash_profile
   printf "Shortcuts created!\n\n"
 
 fi
