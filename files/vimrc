@@ -47,6 +47,8 @@ set expandtab
 "Syntax helper / colors and so on
 syntax on
 
+" Map to use enter in autocomplete pop up and dont add a new line
+inoremap <expr> <silent> <cr> pumvisible() ? "<c-y>" : "<cr>"
 " Map ; to : - just one key
 nnoremap ; :
 " Map Autocomplete braces
