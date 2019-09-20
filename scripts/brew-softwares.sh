@@ -48,3 +48,19 @@ else
     printf "Mysql-client (via homebrew) installed!\n"
   fi
 fi
+
+if  [[ $(command brew ls | grep ctags) != "" ]] && [[ "$1" != "-f" ]]
+then
+  printf "Oops! You already have ctags (via homebrew) installed!\nUse -f as last parameter to force an update!\n\n" 
+else
+  if [[ $(command brew ls | grep ctags) != "" ]]
+  then
+    printf "Upgrading ctags (via homebrew) version...\n"
+    brew upgrade ctags
+    printf "ctags (via homebrew) is up to date!\n"
+  else
+    printf "Installing ctags (via homebrew) version...\n"
+    brew install ctags
+    printf "ctags (via homebrew) installed!\n"
+  fi
+fi
