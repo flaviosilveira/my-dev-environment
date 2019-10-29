@@ -11,9 +11,15 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-surround'
-Plugin 'mattn/emmet-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'StanAngeloff/php.vim'
+Plugin 'craigemery/vim-autotag'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'phpactor/phpactor'
+Plugin 'ncm2/ncm2'
+Plugin 'roxma/nvim-yarp'
+Plugin 'phpactor/ncm2-phpactor'
+Plugin 'StanAngeloff/php.vim'
 
 " All of your Plugins before this line
 call vundle#end()            " required
