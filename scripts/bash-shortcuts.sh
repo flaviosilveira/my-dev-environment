@@ -24,6 +24,7 @@ else
   echo "## Bash Shortcuts ###" >> ~/.bash_profile
   echo "alias ll='ls -l'" >> ~/.bash_profile
   echo "alias v='/usr/local/bin/vim'" >> ~/.bash_profile
+  echo "LC_ALL=en_US.UTF-8" >> ~/.bash_profile
   printf "Shortcuts created!\n\n"
 
 fi
