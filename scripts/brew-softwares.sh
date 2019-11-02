@@ -23,11 +23,11 @@ else
   if [[ $(command brew ls | grep vim) != "" ]]
   then
     printf "Upgrading Vim (via homebrew) version...\n"
-    brew upgrade ripgrep
+    brew upgrade vim
     printf "Vim (via homebrew) is up to date!\n"
   else
     printf "Installing Vim (via homebrew) version...\n"
-    brew install ripgrep
+    brew install vim
     printf "Vim (via homebrew) installed!\n"
   fi
 fi
