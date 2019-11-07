@@ -64,3 +64,19 @@ else
     printf "ctags (via homebrew) installed!\n"
   fi
 fi
+
+if  [[ $(command brew ls | grep node) != "" ]] && [[ "$1" != "-f" ]]
+then
+  printf "Oops! You already have Node (via homebrew) installed!\nUse -f as last parameter to force an update!\n\n" 
+else
+  if [[ $(command brew ls | grep node) != "" ]]
+  then
+    printf "Upgrading node (via homebrew) version...\n"
+    brew upgrade node
+    printf "node (via homebrew) is up to date!\n"
+  else
+    printf "Installing node (via homebrew) version...\n"
+    brew install node
+    printf "node (via homebrew) installed!\n"
+  fi
+fi
