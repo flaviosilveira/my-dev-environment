@@ -8,17 +8,27 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
+" Tree of the files
 Plugin 'scrooloose/nerdtree'
+" Infos of the files
 Plugin 'vim-airline/vim-airline'
+" Surround variables, words and etc
 Plugin 'tpope/vim-surround'
+" Search Files
 Plugin 'ctrlpvim/ctrlp.vim'
+" HTML auto generate
+Plugin 'mattn/emmet-vim'
+" Auto Update to tags / Ctags
 Plugin 'craigemery/vim-autotag'
+" Engine and tools for snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+" PHP completion, refactoring and introspection 
 Plugin 'phpactor/phpactor'
+" ncm2 - completion
 Plugin 'ncm2/ncm2'
-Plugin 'roxma/nvim-yarp'
 Plugin 'phpactor/ncm2-phpactor'
+" PHP Syntax
 Plugin 'StanAngeloff/php.vim'
 
 " All of your Plugins before this line
