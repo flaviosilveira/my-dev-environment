@@ -22,10 +22,22 @@ Plugin 'mattn/emmet-vim'
 Plugin 'SirVer/ultisnips'
 " Snips Database
 Plugin 'honza/vim-snippets'
+" Syntax Checking
+Plugin 'vim-syntastic/syntastic'
 
 " All of your Plugins before this line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Open NERDTree
 autocmd vimenter * NERDTree
@@ -53,7 +65,6 @@ set shiftwidth=2
 "On pressing tab, insert 2 spaces
 set expandtab
 "Syntax helper / colors and so on
-filetype plugin on
 syntax on
 
 " Map to use enter in autocomplete pop up and dont add a new line
