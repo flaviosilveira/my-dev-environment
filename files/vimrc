@@ -24,6 +24,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " Syntax Checking
 Plugin 'vim-syntastic/syntastic'
+" EditorConfig read
+Plugin 'editorconfig/editorconfig-vim'
 
 " All of your Plugins before this line
 call vundle#end()            " required
@@ -42,29 +44,30 @@ let g:syntastic_check_on_wq = 0
 " Open NERDTree
 autocmd vimenter * NERDTree
 
+" NERDTree delimiter
+set encoding=utf-8
+
 " CtrlP to use ripgrep as file finder
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
 endif"
 
-" NERDTree delimiter
-set encoding=utf-8
-
-"set configs
+" set configs
+" Number Lines
 set number
+" Relative Line Number
 set relativenumber
+" Show the command you are typing in the right bottom corner
 set showcmd
+" Ignore case on Search in file 
 set ignorecase
+" What to do when backspace key pressed?
 set bs=2
 " Colum Limit
 set colorcolumn=81
-"show existing tab with 2 spaces width
-set tabstop=2
-"when indenting with '>', use 2 spaces width
-set shiftwidth=2
-"On pressing tab, insert 2 spaces
-set expandtab
-"Syntax helper / colors and so on
+" Use colors that looks good with dark background
+set background=dark
+" Syntax helper / colors and so on
 syntax on
 
 " Map to use enter in autocomplete pop up and dont add a new line
