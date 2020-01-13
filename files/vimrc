@@ -70,6 +70,18 @@ set background=dark
 " Syntax helper / colors and so on
 syntax on
 
+" Check for tags and .editorconfig
+if empty(glob("tags"))
+    echo "Missing tags file !!"
+    echo "Run ctags -R --language-force=php"
+    echo "or ctags -R --exclude=*.js ."
+    echo "-----------------"
+endif
+if empty(glob(".editorconfig"))
+    echo "Missing .editorconfig file !!"
+    echo "-----------------"
+endif
+
 " Map to use enter in autocomplete pop up and dont add a new line
 inoremap <expr> <silent> <cr> pumvisible() ? "<c-y>" : "<cr>"
 " Map ; to : - just one key
