@@ -18,18 +18,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
 " HTML auto generate
 Plugin 'mattn/emmet-vim'
-" Auto Update to tags / Ctags
-Plugin 'craigemery/vim-autotag'
-" Engine and tools for snippets
+" Snips Engine
 Plugin 'SirVer/ultisnips'
+" Snips Database
 Plugin 'honza/vim-snippets'
-" PHP completion, refactoring and introspection 
-Plugin 'phpactor/phpactor'
-" ncm2 - completion
-Plugin 'ncm2/ncm2'
-Plugin 'phpactor/ncm2-phpactor'
-" PHP Syntax
-Plugin 'StanAngeloff/php.vim'
 
 " All of your Plugins before this line
 call vundle#end()            " required
@@ -61,6 +53,7 @@ set shiftwidth=2
 "On pressing tab, insert 2 spaces
 set expandtab
 "Syntax helper / colors and so on
+filetype plugin on
 syntax on
 
 " Map to use enter in autocomplete pop up and dont add a new line
