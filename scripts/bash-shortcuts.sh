@@ -25,6 +25,9 @@ else
   echo "alias ll='ls -l'" >> ~/.bash_profile
   echo "alias v='/usr/local/bin/vim'" >> ~/.bash_profile
   echo "alias composer='docker run --rm --interactive --tty --volume $PWD:/app composer'"
+  echo "alias hugo-server='docker run --rm --name "hugo1" -p 1313:1313 -v $(pwd)/src:/src -v $(pwd)/public:/output -e HUGO_THEME="ananke" -e HUGO_WATCH="true" jojomi/hugo'"
+  echo "alias hugo-kill='docker stop hugo1'"
+  echo "alias hugo-build='docker run --rm --name "hugo2" -v $(pwd)/src:/src -v $(pwd)/public:/output -e HUGO_THEME="ananke" jojomi/hugo'"
   echo "LC_ALL=en_US.UTF-8" >> ~/.bash_profile
   printf "Shortcuts created!\n\n"
 
