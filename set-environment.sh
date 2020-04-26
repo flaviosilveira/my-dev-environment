@@ -18,7 +18,7 @@ install)
   case $2 in
 
   --vimrc)
-    ./scripts/vim-config.sh "${@: -1}"
+    ./scripts/vimrc.sh "${@: -1}"
   ;;
 
   --brew)
@@ -53,7 +53,7 @@ install)
     printf "Installing...\n\n"
     ./scripts/brew.sh "${@: -1}"
     ./scripts/brew-softwares.sh "${@: -1}"
-    ./scripts/vim-config.sh "${@: -1}"
+    ./scripts/vimrc.sh "${@: -1}"
     ./scripts/docker.sh "${@: -1}"
     ./scripts/gnu-softwares.sh "${@: -1}"
     ./scripts/git-shortcuts.sh "${@: -1}"
@@ -70,7 +70,7 @@ remove)
   case $2 in
   
   --vimrc)
-    ./scripts/remove-vim-config.sh
+    ./scripts/remove-vimrc.sh
   ;;
 
   --docker)
@@ -103,7 +103,7 @@ remove)
 
   *)
     printf "Removing...\n\n"
-    ./scripts/remove-vim-config.sh
+    ./scripts/remove-vimrc.sh
     ./scripts/remove-docker.sh
     ./scripts/remove-mysql.sh
     ./scripts/remove-gnu-softwares.sh
