@@ -2,17 +2,18 @@
 
 Simple script to install, update or remove my development environment.
 
-* My Vimrc config
-* Vundle
-* Vim Plugins (Nerdtree, Airline, Surround, Emmet)
 * Homebrew
 * Softwares via Homebrew
   * Ripgrep
   * Ctags
-  * Vim
+  * Vim (With my Vimrc config, Vundle and Plugin [Nerdtree, Airline, Surround, Emmet])
   * Visual Studio Code
-* Mysql (Homebrew)
-* Docker 
+  * Dropbox
+  * Slack
+  * Mysql Cli
+  * Docker
+* Gnu Softwares
+  * Sed (via homebrew)
 * Git Shortcuts
   * gs - git status
   * ga - git add
