@@ -65,18 +65,21 @@ else
   fi
 fi
 
-if  [[ $(command brew ls | grep node) != "" ]] && [[ "$1" != "-f" ]]
+if  [[ $(command brew ls | grep visual-studio-code) != "" ]] && [[ "$1" != "-f" ]]
 then
-  printf "Oops! You already have Node (via homebrew) installed!\nUse -f as last parameter to force an update!\n\n" 
+  printf "Oops! You already have visual-studio-code (via homebrew) installed!\nUse -f as last parameter to force an update!\n\n" 
 else
-  if [[ $(command brew ls | grep node) != "" ]]
+  if [[ $(command brew ls | grep visual-studio-code) != "" ]]
   then
-    printf "Upgrading node (via homebrew) version...\n"
-    brew upgrade node
-    printf "node (via homebrew) is up to date!\n"
+    printf "Upgrading visual-studio-code (via homebrew) version...\n"
+    brew upgrade visual-studio-code
+    printf "visual-studio-code (via homebrew) is up to date!\n"
   else
-    printf "Installing node (via homebrew) version...\n"
-    brew install node
-    printf "node (via homebrew) installed!\n"
+    printf "Installing visual-studio-code (via homebrew) version...\n"
+    brew install --cask visual-studio-code
+    echo "" >> ~/.zprofile
+    echo "## Add Visual Studio Code (code) ###" >> ~/.zprofile
+    echo "export PATH='\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin'" >> ~/.zprofile
+    printf "visual-studio-code (via homebrew) installed!\n"
   fi
 fi
