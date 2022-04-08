@@ -16,7 +16,7 @@ else
   echo "" >> ~/.zprofile
   echo "## Add Brew bin in the path ###" >> ~/.zprofile
   echo "export PATH='\$PATH:/opt/homebrew/bin'" >> ~/.zprofile
-  export PATH='\$PATH:/opt/homebrew/bin
+  export PATH='\$PATH:/opt/homebrew/bin'
   printf "Homebrew Installed!\n"
 
 fi
