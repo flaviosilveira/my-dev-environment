@@ -80,6 +80,7 @@ else
     echo "" >> ~/.zprofile
     echo "## Add Visual Studio Code (code) ###" >> ~/.zprofile
     echo "export PATH='\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin'" >> ~/.zprofile
+    export PATH='\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
     printf "visual-studio-code (via homebrew) installed!\n"
   fi
 fi
