@@ -1,17 +1,17 @@
 #!/bin/bash
 
-if [ ! -e ~/.bash_profile ]
+if [ ! -e ~/.zprofile ]
 then
-  printf "You not even have a bash_profile file! All done here!\n\n"
+  printf "You not even have a zprofile file! All done here!\n\n"
 fi
 
-if  [[ $(command grep -il "ls -l" ~/.bash_profile) = "" ]]
+if  [[ $(command grep -il "ls -l" ~/.zprofile) = "" ]]
 then
-  printf "Cant find bash shortcuts... All done here!\n\n"
+  printf "Cant find Z shortcuts... All done here!\n\n"
 fi
 
 printf "Removing Bash shortcuts..."
-sed -i '' '/Bash Shortcuts/d' ~/.bash_profile
-sed -i '' '/ls -l/d' ~/.bash_profile
-sed -i '' '/vim/d' ~/.bash_profile
-printf "Bash Shortcuts are gone\n\n"
+sed -i '' '/Z Shortcuts/d' ~/.zprofile
+sed -i '' '/ls -l/d' ~/.zprofile
+sed -i '' '/vim/d' ~/.zprofile
+printf "Z Shortcuts are gone\n\n"
