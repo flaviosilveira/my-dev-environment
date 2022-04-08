@@ -83,3 +83,51 @@ else
     printf "visual-studio-code (via homebrew) installed!\n"
   fi
 fi
+
+if  [[ $(command brew ls | grep postman) != "" ]] && [[ "$1" != "-f" ]]
+then
+  printf "Oops! You already have postman (via homebrew) installed!\nUse -f as last parameter to force an update!\n\n" 
+else
+  if [[ $(command brew ls | grep postman) != "" ]]
+  then
+    printf "Upgrading postman (via homebrew) version...\n"
+    brew upgrade postman
+    printf "postman (via homebrew) is up to date!\n"
+  else
+    printf "Installing postman (via homebrew) version...\n"
+    brew install --cask postman
+    printf "postman (via homebrew) installed!\n"
+  fi
+fi
+
+if  [[ $(command brew ls | grep slack) != "" ]] && [[ "$1" != "-f" ]]
+then
+  printf "Oops! You already have slack (via homebrew) installed!\nUse -f as last parameter to force an update!\n\n" 
+else
+  if [[ $(command brew ls | grep slack) != "" ]]
+  then
+    printf "Upgrading slack (via homebrew) version...\n"
+    brew upgrade slack
+    printf "slack (via homebrew) is up to date!\n"
+  else
+    printf "Installing slack (via homebrew) version...\n"
+    brew install --cask slack
+    printf "slack (via homebrew) installed!\n"
+  fi
+fi
+
+if  [[ $(command brew ls | grep dropbox) != "" ]] && [[ "$1" != "-f" ]]
+then
+  printf "Oops! You already have dropbox (via homebrew) installed!\nUse -f as last parameter to force an update!\n\n" 
+else
+  if [[ $(command brew ls | grep dropbox) != "" ]]
+  then
+    printf "Upgrading dropbox (via homebrew) version...\n"
+    brew upgrade slack
+    printf "dropbox (via homebrew) is up to date!\n"
+  else
+    printf "Installing dropbox (via homebrew) version...\n"
+    brew install --cask dropbox
+    printf "dropbox (via homebrew) installed!\n"
+  fi
+fi
