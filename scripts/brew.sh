@@ -12,7 +12,7 @@ else
   fi
 
   printf "Installing Homebrew...\n"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo "" >> ~/.zprofile
   echo "## Add Brew bin in the path ###" >> ~/.zprofile
   echo "export PATH='\$PATH:/opt/homebrew/bin'" >> ~/.zprofile
