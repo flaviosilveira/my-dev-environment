@@ -1,31 +1,31 @@
 #!/bin/bash
 
-if [ ! -e ~/.bash_profile ]
+if [ ! -e ~/.zprofile ]
 then
   printf "Cant find .bash_profile file.. creating one..\n"
-  touch ~/.bash_profile
-  chmod 644 ~/.bash_profile
-  printf ".bash_profile created!\n\n"
+  touch ~/.zprofile
+  chmod 644 ~/.zprofile
+  printf ".zprofile created!\n\n"
 fi
 
-if  [[ $(command grep -il "ls -l" ~/.bash_profile) != "" ]] && [[ "$1" != "-f" ]]
+if  [[ $(command grep -il "ls -l" ~/.zprofile) != "" ]] && [[ "$1" != "-f" ]]
 then
-  printf "Looks like you already have some bash shortcuts in your bash profile..\nUse -f to remove them and re-add them.\n\n"
+  printf "Looks like you already have some bash shortcuts in your Z profile..\nUse -f to remove them and re-add them.\n\n"
 else
 
-  if [[ $(command grep -il "ls -l" ~/.bash_profile) != "" ]]
+  if [[ $(command grep -il "ls -l" ~/.zprofile) != "" ]]
   then
     printf "Removing actual bash shortcuts..."
     ./scripts/remove-bash-shortcuts.sh
   fi
 
   printf "Creating shortcuts...\n"
-  echo "" >> ~/.bash_profile
-  echo "## Bash Shortcuts ###" >> ~/.bash_profile
-  echo "alias ll='ls -l'" >> ~/.bash_profile
-  echo "alias v='/usr/local/bin/vim'" >> ~/.bash_profile
+  echo "" >> ~/.zprofile
+  echo "## Bash Shortcuts ###" >> ~/.zprofile
+  echo "alias ll='ls -l'" >> ~/.zprofile
+  echo "alias v='/usr/local/bin/vim'" >> ~/.zprofile
   echo "alias composer='docker run --rm --interactive --tty --volume $PWD:/app composer'"
-  echo "LC_ALL=en_US.UTF-8" >> ~/.bash_profile
+  echo "LC_ALL=en_US.UTF-8" >> ~/.zprofile
   printf "Shortcuts created!\n\n"
 
 fi
