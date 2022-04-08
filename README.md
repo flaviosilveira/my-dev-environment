@@ -6,6 +6,11 @@ Simple script to install, update or remove my development environment.
 * Vundle
 * Vim Plugins (Nerdtree, Airline, Surround, Emmet)
 * Homebrew
+* Softwares via Homebrew
+  * Ripgrep
+  * Ctags
+  * Vim
+  * Visual Studio Code
 * Mysql (Homebrew)
 * Docker 
 * Git Shortcuts
@@ -42,4 +47,11 @@ Git Shortcuts are based in Bash, using your .bash_profile file.
 
 ## Contributing
 
-Feel free if you think or wish to contribute here.
+Feel free if you wish to contribute here.
+
+# Instructions when in a new Mac
+
+* Update SO to the last version possible
+* Install XCode cli
+* Clone this project
+* Run ./set-environment --install
