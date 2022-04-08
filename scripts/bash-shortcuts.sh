@@ -21,7 +21,7 @@ else
 
   printf "Creating shortcuts...\n"
   echo "" >> ~/.zprofile
-  echo "## Bash Shortcuts ###" >> ~/.zprofile
+  echo "## Z Shortcuts ###" >> ~/.zprofile
   echo "alias ll='ls -l'" >> ~/.zprofile
   echo "alias v='/usr/local/bin/vim'" >> ~/.zprofile
   echo "alias composer='docker run --rm --interactive --tty --volume $PWD:/app composer'"
