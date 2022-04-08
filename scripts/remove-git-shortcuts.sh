@@ -1,20 +1,21 @@
 #!/bin/bash
 
-if [ ! -e ~/.bash_profile ]
+if [ ! -e ~/.zprofile ]
 then
-  printf "You not even have a bash_profile file! All done here!\n\n"
+  printf "You not even have a zprofile file! All done here!\n\n"
 fi
 
-if  [[ $(command grep -il "git commit" ~/.bash_profile) = "" ]]
+if  [[ $(command grep -il "git commit" ~/.zprofile) = "" ]]
 then
   printf "Cant find git shortcuts... All done here!\n\n"
 fi
 
 printf "Removing git shortcuts..."
-sed -i '' '/Git Shortcuts/d' ~/.bash_profile
-sed -i '' '/git status/d' ~/.bash_profile
-sed -i '' '/git add/d' ~/.bash_profile
-sed -i '' '/git diff/d' ~/.bash_profile
-sed -i '' '/git commit/d' ~/.bash_profile
-sed -i '' '/git push origin master/d' ~/.bash_profile
+sed -i '' '/Git Shortcuts/d' ~/.zprofile
+sed -i '' '/git status/d' ~/.zprofile
+sed -i '' '/git add/d' ~/.zprofile
+sed -i '' '/git diff/d' ~/.zprofile
+sed -i '' '/git commit/d' ~/.zprofile
+sed -i '' '/git checkout/d' ~/.zprofile
+sed -i '' '/git pull/d' ~/.zprofile
 printf "Git Shortcuts are gone\n\n"
