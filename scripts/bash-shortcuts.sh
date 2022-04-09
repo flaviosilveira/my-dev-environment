@@ -23,7 +23,7 @@ else
   echo "" >> ~/.zprofile
   echo "## Z Shortcuts ###" >> ~/.zprofile
   echo "alias ll='ls -l'" >> ~/.zprofile
-  echo "alias v='/usr/local/bin/vim'" >> ~/.zprofile
+  echo "alias v='/opt/homebrew/bin/vim'" >> ~/.zprofile
   echo "alias composer='docker run --rm --interactive --tty --volume $PWD:/app composer'"
   echo "LC_ALL=en_US.UTF-8" >> ~/.zprofile
   printf "Shortcuts created!\n\n"
