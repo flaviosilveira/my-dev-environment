@@ -16,7 +16,7 @@ else
   if [[ $(command grep -il "ls -l" ~/.zprofile) != "" ]]
   then
     printf "Removing actual bash shortcuts..."
-    ./scripts/remove-bash-shortcuts.sh
+    $PWD/scripts/remove-bash-shortcuts.sh
   fi
 
   printf "Creating shortcuts...\n"

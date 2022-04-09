@@ -16,7 +16,7 @@ else
   if [[ $(command grep -il "git commit" ~/.zprofile) != "" ]]
   then
     printf "Removing actual git shortcuts..."
-    ./scripts/remove-git-shortcuts.sh
+    $PWD/scripts/remove-git-shortcuts.sh
   fi
 
   printf "Creating shortcuts...\n"

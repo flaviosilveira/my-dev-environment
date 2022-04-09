@@ -8,7 +8,7 @@ then
     printf "Cant remove Docker... Looks like it is not installed in the default directory.. Use GUI!\n\n"
   else
     /Applications/Docker.app/Contents/MacOS/Docker --uninstall
-    brew cask uninstall --force docker
+    brew uninstall --cask --force docker
     rm -rf /Applications/Docker.app
     printf "Docker was removed!\n\n"
   fi

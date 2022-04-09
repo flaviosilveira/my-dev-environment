@@ -8,15 +8,15 @@ else
   if [[ $(command -v brew) == "" ]]
   then
     printf "Removing old Homebrew install..\n"
-    ./remove-brew.sh
+    $PWD/scripts/remove-brew.sh
   fi
 
   printf "Installing Homebrew...\n"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo "" >> ~/.zprofile
   echo "## Add Brew bin in the path ###" >> ~/.zprofile
-  echo "export PATH='\$PATH:/opt/homebrew/bin'" >> ~/.zprofile
-  export PATH='\$PATH:/opt/homebrew/bin'
+  echo "export PATH='$PATH:/opt/homebrew/bin'" >> ~/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
   printf "Homebrew Installed!\n"
 
 fi

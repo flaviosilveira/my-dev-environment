@@ -12,7 +12,7 @@ else
   fi
 
   printf "Installing Docker App...\n"
-  brew cask install docker
+  brew install --cask docker
   printf "Docker installed!\n\n"
 
   printf "Opening Docker App...\n"

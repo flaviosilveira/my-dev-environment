@@ -1,19 +1,22 @@
 #!/bin/bash
 
-if [ ! -e ~/.bash_profile ]
+printf "Removing show git branch..."
+
+if [ ! -e ~/.zprofile ]
 then
-  printf "You not even have a bash_profile file! All done here!\n\n"
+  printf "You not even have a zprofile file! All done here!\n\n"
+  exit 0
 fi
 
-if  [[ $(command grep -il "git commit" ~/.bash_profile) = "" ]]
+if  [[ $(command grep -il "git commit" ~/.zprofile) = "" ]]
 then
   printf "Cant find tricks to show git branch... All done here!\n\n"
 fi
 
-printf "Removing show git branch..."
-sed -i '' '/Show git branch/d' ~/.bash_profile
-sed -i '' '/parse_git_branch()/d' ~/.bash_profile
-sed -i '' '/git branch 2>/d' ~/.bash_profile
-sed -i '' '/}/d' ~/.bash_profile
-sed -i '' '/(parse_git_branch)/d' ~/.bash_profile
+sed -i '' '/Show git branch/d' ~/.zprofile
+sed -i '' '/parse_git_branch()/d' ~/.zprofile
+sed -i '' '/git branch 2>/d' ~/.zprofile
+sed -i '' '/}/d' ~/.zprofile
+sed -i '' '/(parse_git_branch)/d' ~/.zprofile
+
 printf "Show git branch are gone\n\n"

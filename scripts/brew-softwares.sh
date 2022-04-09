@@ -79,8 +79,7 @@ else
     brew install --cask visual-studio-code
     echo "" >> ~/.zprofile
     echo "## Add Visual Studio Code (code) ###" >> ~/.zprofile
-    echo "export PATH='\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin'" >> ~/.zprofile
-    export PATH='\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
+    echo "export PATH='$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin'" >> ~/.zprofile
     printf "visual-studio-code (via homebrew) installed!\n"
   fi
 fi
@@ -132,3 +131,20 @@ else
     printf "dropbox (via homebrew) installed!\n"
   fi
 fi
+
+if  [[ $(command brew ls | grep google-chrome) != "" ]] && [[ "$1" != "-f" ]]
+then
+  printf "Oops! You already have google-chrome (via homebrew) installed!\nUse -f as last parameter to force an update!\n\n" 
+else
+  if [[ $(command brew ls | grep google-chrome) != "" ]]
+  then
+    printf "Upgrading dropbox (via homebrew) version...\n"
+    brew upgrade google-chrome
+    printf "google-chrome (via homebrew) is up to date!\n"
+  else
+    printf "Installing dropbox (via homebrew) version...\n"
+    brew install --cask google-chrome
+    printf "google-chrome (via homebrew) installed!\n"
+  fi
+fi
+

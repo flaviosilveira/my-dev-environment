@@ -22,9 +22,18 @@ Simple script to install, update or remove my development environment.
 
 ## Getting Started
 
+### Install Brew
+./scripts/brew.sh
+
+### Source
+source ~/.zprofile
+
 ### Install
 ./set-environment.sh install
 **Use -f as last parameter to force re-install**
+
+### Source Again
+source ~/.zprofile
 
 ### Remove
 ./set-environment.sh remove
