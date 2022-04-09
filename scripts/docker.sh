@@ -12,6 +12,7 @@ else
   fi
 
   printf "Installing Docker App...\n"
+  softwareupdate --install-rosetta
   brew install --cask docker
   printf "Docker installed!\n\n"
 
