@@ -13,6 +13,8 @@ else
 
   printf "Installing Docker App...\n"
   softwareupdate --install-rosetta
+  echo "## M1 Platform adjust for Docker ###" >> ~/.zprofile
+  echo "export DOCKER_DEFAULT_PLATFORM=linux/amd64" >> ~/.zprofile
   brew install --cask docker
   printf "Docker installed!\n\n"
 
