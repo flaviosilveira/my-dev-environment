@@ -26,6 +26,10 @@ else
   echo "alias v='/opt/homebrew/bin/vim'" >> ~/.zprofile
   echo "alias composer='docker run --rm --interactive --tty --volume $PWD:/app composer'"
   echo "LC_ALL=en_US.UTF-8" >> ~/.zprofile
+  echo "## Docker shortcuts ###" >> ~/.zprofile
+  echo "alias dps='docker ps'" >> ~/.zprofile
+  echo "alias dcu='docker compose up'" >> ~/.zprofile
+  echo "alias dcd='docker compose down'" >> ~/.zprofile
   printf "Shortcuts created!\n\n"
 
 fi
