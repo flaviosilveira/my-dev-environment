@@ -18,7 +18,8 @@ else
   add_to_profile "## Shell Shortcuts ###"
   add_to_profile "alias ll='ls -l'"
   if [ -n "$VIM_PATH" ]; then
-    add_to_profile "alias v='$VIM_PATH'"
+    # v browses files in Yazi; v <file> edits it in Vim
+    add_to_profile "unalias v 2>/dev/null; function v { if [ \$# -eq 0 ] && command -v yazi >/dev/null; then yazi; else $VIM_PATH \"\$@\"; fi; }"
   fi
   add_to_profile "export LC_ALL=en_US.UTF-8"
   

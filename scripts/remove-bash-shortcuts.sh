@@ -14,6 +14,7 @@ fi
 sed_inplace '/## Shell Shortcuts ###/d' "$PROFILE_FILE"
 sed_inplace "/alias ll='ls -l'/d" "$PROFILE_FILE"
 sed_inplace "/alias v=/d" "$PROFILE_FILE"
+sed_inplace "/function v {/d" "$PROFILE_FILE"
 sed_inplace "/export LC_ALL=en_US.UTF-8/d" "$PROFILE_FILE"
 
 sed_inplace '/## Docker shortcuts ###/d' "$PROFILE_FILE"

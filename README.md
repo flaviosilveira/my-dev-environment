@@ -6,8 +6,8 @@ Simple script to install, update or remove my development environment.
 * Softwares via Homebrew
   * Ripgrep
   * Ctags
-  * Vim (With my Vimrc config, Vundle and Plugin [Nerdtree, Airline, Surround, Emmet])
-    * `v` opens the NERDTree, `v file` opens just the file, `Ctrl+n` toggles the tree
+  * Vim (With my Vimrc config, Vundle and Plugin [Airline, Surround, Emmet, CtrlP])
+    * `v` browses files in Yazi (Enter opens Vim, `:q` goes back), `v file` edits the file
 * Yazi file manager, with `~/.config/yazi/yazi.toml` (wider preview, opens files in Vim)
   * Visual Studio Code
   * Dropbox

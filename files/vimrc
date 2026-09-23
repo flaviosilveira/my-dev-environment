@@ -8,8 +8,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
-" Tree of the files
-Plugin 'scrooloose/nerdtree'
 " Infos of the files
 Plugin 'vim-airline/vim-airline'
 " Surround variables, words and etc
@@ -41,16 +39,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Open NERDTree only when vim starts without a file: `v` shows the tree,
-" `v file` opens just the file, `v dir/` opens the tree on that directory once
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-" Ctrl+n toggles the tree whenever it is wanted
-nnoremap <C-n> :NERDTreeToggle<CR>
 
-" NERDTree delimiter
 set encoding=utf-8
 
 " CtrlP to use ripgrep as file finder
