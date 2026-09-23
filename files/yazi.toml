@@ -7,4 +7,4 @@ show_hidden = true
 sort_dir_first = true
 
 [opener]
-edit = [{ run = '${EDITOR:-vim} "$@"', block = true, for = "unix" }]
+edit = [{ run = '${EDITOR:-vim} %s', block = true, for = "unix" }]
