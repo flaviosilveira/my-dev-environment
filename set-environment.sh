@@ -21,6 +21,10 @@ install)
     $PWD/scripts/vimrc.sh "${@: -1}"
   ;;
 
+  --yazi)
+    $PWD/scripts/yazi.sh "${@: -1}"
+  ;;
+
   --base)
     $PWD/scripts/os-base-setup.sh "${@: -1}"
   ;;
@@ -54,6 +58,7 @@ install)
     $PWD/scripts/os-base-setup.sh "${@: -1}"
     $PWD/scripts/softwares.sh "${@: -1}"
     $PWD/scripts/vimrc.sh "${@: -1}"
+    $PWD/scripts/yazi.sh "${@: -1}"
     $PWD/scripts/docker.sh "${@: -1}"
     $PWD/scripts/gnu-softwares.sh "${@: -1}"
     $PWD/scripts/git-shortcuts.sh "${@: -1}"
@@ -71,6 +76,10 @@ remove)
   
   --vimrc)
     $PWD/scripts/remove-vimrc.sh
+  ;;
+
+  --yazi)
+    $PWD/scripts/remove-yazi.sh
   ;;
 
   --docker)
@@ -104,6 +113,7 @@ remove)
   *)
     printf "Removing...\n\n"
     $PWD/scripts/remove-vimrc.sh
+    $PWD/scripts/remove-yazi.sh
     $PWD/scripts/remove-docker.sh
     $PWD/scripts/remove-gnu-softwares.sh
     $PWD/scripts/remove-softwares.sh

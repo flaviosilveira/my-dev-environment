@@ -46,6 +46,8 @@ remove_cli_pkg "ripgrep" "ripgrep"
 remove_cli_pkg "vim" "vim"
 remove_cli_pkg "mysql-client" "mysql-client"
 remove_cli_pkg "universal-ctags" "universal-ctags"
+remove_cli_pkg "yazi" "yazi"
+remove_gui_app "yazi" # snap on linux
 
 remove_gui_app "visual-studio-code"
 remove_gui_app "code" # for linux

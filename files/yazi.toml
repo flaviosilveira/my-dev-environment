@@ -1,0 +1,10 @@
+# Yazi file manager: https://yazi-rs.github.io/docs/configuration/yazi
+
+[mgr]
+# parent : current : preview; more room for the file preview
+ratio = [1, 3, 4]
+show_hidden = true
+sort_dir_first = true
+
+[opener]
+edit = [{ run = 'vim "$@"', block = true, for = "unix" }]

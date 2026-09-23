@@ -41,8 +41,14 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Open NERDTree
-autocmd vimenter * NERDTree
+" Open NERDTree only when vim starts without a file: `v` shows the tree,
+" `v file` opens just the file, `v dir/` opens the tree on that directory once
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+" Ctrl+n toggles the tree whenever it is wanted
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " NERDTree delimiter
 set encoding=utf-8
@@ -69,18 +75,6 @@ set colorcolumn=81
 set background=dark
 " Syntax helper / colors and so on
 syntax on
-
-" Check for tags and .editorconfig
-if empty(glob("tags"))
-    echo "Missing tags file !!"
-    echo "Run ctags -R --language-force=php"
-    echo "or ctags -R --exclude=*.js ."
-    echo "-----------------"
-endif
-if empty(glob(".editorconfig"))
-    echo "Missing .editorconfig file !!"
-    echo "-----------------"
-endif
 
 " Map to use enter in autocomplete pop up and dont add a new line
 inoremap <expr> <silent> <cr> pumvisible() ? "<c-y>" : "<cr>"

@@ -9,6 +9,16 @@ install_cli_pkg "mysql-client" "mysql-client"
 install_cli_pkg "universal-ctags" "universal-ctags"
 install_cli_pkg "go" "golang-go"
 
+# Yazi file manager
+if ! command -v yazi &> /dev/null; then
+    if [[ "$OS_TYPE" == "macos" ]]; then
+        brew install yazi
+    elif [[ "$OS_TYPE" == "linux-ubuntu" ]]; then
+        printf "Installing Yazi via snap...\n"
+        sudo snap install yazi --classic
+    fi
+fi
+
 # AWS CLI
 if ! command -v aws &> /dev/null; then
     if [[ "$OS_TYPE" == "macos" ]]; then
