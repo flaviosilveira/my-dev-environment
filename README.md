@@ -9,6 +9,7 @@ Simple script to install, update or remove my development environment.
   * Vim (With my Vimrc config, Vundle and Plugin [Airline, Surround, Emmet, CtrlP])
     * `v` browses files in Yazi (Enter opens Vim, `:q` goes back), `v file` edits the file
 * Yazi file manager, with `~/.config/yazi/yazi.toml` (wider preview, opens files in Vim)
+  * Icons need a Nerd Font: installs JetBrainsMono Nerd Font (macOS); set it as the Terminal profile font
   * Visual Studio Code
   * Dropbox
   * Slack

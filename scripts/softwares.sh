@@ -94,7 +94,7 @@ fi
 
 if [[ "$OS_TYPE" == "macos" ]]; then
     # Homebrew Cask for macOS
-    brew install --cask visual-studio-code postman slack dropbox google-chrome
+    brew install --cask visual-studio-code postman slack dropbox google-chrome font-jetbrains-mono-nerd-font
     add_to_profile "## Add Visual Studio Code (code) ###"
     add_to_profile "export PATH='\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin'"
 elif [[ "$OS_TYPE" == "linux-ubuntu" ]]; then
