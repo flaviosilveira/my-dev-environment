@@ -70,17 +70,17 @@ if command -v asdf &> /dev/null; then
     # Android SDK via ASDF
     if ! asdf list android-sdk &>/dev/null; then
         printf "Installing Android SDK via ASDF...\n"
-        asdf install android-sdk latest
-        asdf global android-sdk latest
+        asdf install android-sdk 19.0
+        asdf global android-sdk 19.0
     fi
 fi
 
 # Android SDK Profile Config
 add_to_profile "## Android SDK ###"
-add_to_profile "export ANDROID_HOME=\"\$HOME/.asdf/installs/android-sdk/latest\""
+add_to_profile "export ANDROID_HOME=\"\$HOME/.asdf/installs/android-sdk/19.0\""
 add_to_profile "export PATH=\"\$PATH:\$ANDROID_HOME/emulator\""
 add_to_profile "export PATH=\"\$PATH:\$ANDROID_HOME/platform-tools\""
-add_to_profile "export PATH=\"\$PATH:\$ANDROID_HOME/cmdline-tools/latest/bin\""
+add_to_profile "export PATH=\"\$PATH:\$ANDROID_HOME/cmdline-tools/19.0/bin\""
 
 # Go Profile Config
 add_to_profile "## Go Language ###"
