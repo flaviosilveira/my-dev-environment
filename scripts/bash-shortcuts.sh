@@ -3,10 +3,10 @@
 SOURCE_PATH=$(dirname "$0")
 source "$SOURCE_PATH/utils.sh"
 
-if [[ $(grep -l "alias ll=" "$PROFILE_FILE" 2>/dev/null) != "" ]] && [[ "$1" != "-f" ]]; then
+if [[ $(grep -l "## Shell Shortcuts ###" "$PROFILE_FILE" 2>/dev/null) != "" ]] && [[ "$1" != "-f" ]]; then
   printf "Looks like you already have some bash shortcuts in your profile..\nUse -f to remove them and re-add them.\n\n"
 else
-  if [[ $(grep -l "alias ll=" "$PROFILE_FILE" 2>/dev/null) != "" ]]; then
+  if [[ $(grep -l "## Shell Shortcuts ###" "$PROFILE_FILE" 2>/dev/null) != "" ]]; then
     printf "Removing actual bash shortcuts...\n"
     "$SOURCE_PATH/remove-bash-shortcuts.sh"
   fi
