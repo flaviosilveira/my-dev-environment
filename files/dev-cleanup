@@ -1,0 +1,96 @@
+#!/bin/zsh
+# Weekly disk hygiene for dev work: removes only regenerable caches/temp files; reports, never deletes, worktrees.
+set -u
+export PATH="$HOME/.asdf/shims:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+LOG=$HOME/Library/Logs/dev-cleanup.log
+DEV=$HOME/dev
+TMP_DAYS=3
+DERIVED_DAYS=7
+STALE_DAYS=14
+
+free_kb() { df -k / | awk 'NR==2 {print $4}' }
+log() { if (( ${DRY_RUN:-0} )); then print -r -- "$*"; else print -r -- "$(date '+%F %T') $*" >> $LOG; fi }
+human() { awk -v k=$1 'BEGIN { if (k >= 1048576) printf "%.1f GB", k/1048576; else printf "%.0f MB", k/1024 }' }
+DRY_RUN=${DRY_RUN:-0}
+removed_kb=0
+remove() {
+  local kb=$(du -sk "$1" 2>/dev/null | cut -f1)
+  removed_kb=$(( removed_kb + ${kb:-0} ))
+  if (( DRY_RUN )); then print -r -- "would remove $(human ${kb:-0})  $1"; return; fi
+  rm -rf "$1" 2>/dev/null && log "removed $(human ${kb:-0})  $1"
+}
+run() { (( DRY_RUN )) && { print -r -- "would run: $*"; return 1 }; "$@" >/dev/null 2>&1 }
+in_use() { pgrep -f "$1" >/dev/null 2>&1 }
+stale() { [[ -z $(find "$1" -mtime -$2 -print -quit 2>/dev/null) ]] }
+has_unsaved_git() {
+  local g wt
+  for g in ${(f)"$(find "$1" -maxdepth 5 -name .git -not -path '*/node_modules/*' 2>/dev/null)"}; do
+    wt=${g:h}
+    git -C "$wt" rev-parse --git-dir >/dev/null 2>&1 || continue
+    [[ -n $(git -C "$wt" status --porcelain 2>/dev/null) ]] && return 0
+    [[ -n $(git -C "$wt" log --oneline -1 HEAD --not --remotes 2>/dev/null) ]] && return 0
+  done
+  return 1
+}
+
+before=$(free_kb)
+log "=== start"
+
+for d in /private/tmp/codex-stage-*(N/) /private/tmp/tmp-*(N/); do
+  stale "$d" $TMP_DAYS || continue
+  pid=${${d:t}#tmp-}; pid=${pid%%-*}
+  [[ $pid == <-> ]] && kill -0 $pid 2>/dev/null && continue
+  remove "$d"
+done
+
+for d in /private/tmp/claude-$(id -u)/*/*(N/); do
+  stale "$d" $TMP_DAYS && ! in_use "$d" || continue
+  if has_unsaved_git "$d"; then log "KEEP (git work not pushed) $d"; continue; fi
+  remove "$d"
+done
+
+xdir=${${$(getconf DARWIN_USER_TEMP_DIR)%/}:h}/X
+if ! pgrep -lf "MacOS/Google Chrome( |$)" | grep -qv -- "--headless"; then
+  for d in $xdir/com.google.Chrome.code_sign_clone(N/); do remove "$d"; done
+fi
+
+for d in $HOME/Library/Developer/Xcode/DerivedData/*(N/); do
+  stale "$d" $DERIVED_DAYS && remove "$d"
+done
+run xcrun simctl delete unavailable && log "simctl: removed unavailable simulators"
+
+if docker info >/dev/null 2>&1; then
+  run docker image prune -f && log "docker: pruned dangling images"
+  run docker builder prune -f --filter until=168h && log "docker: pruned build cache older than 7d"
+fi
+
+run brew cleanup --prune=7 && log "brew cleanup done"
+run pnpm store prune && log "pnpm store pruned"
+
+repos=(${(f)"$(find $DEV -maxdepth 3 -type d -name .git -not -path '*/node_modules/*' 2>/dev/null)"})
+for g in $repos; do
+  repo=${g:h}
+  (( DRY_RUN )) || git -C $repo worktree prune 2>/dev/null
+  git -C $repo worktree list --porcelain 2>/dev/null | awk '/^worktree /{print substr($0,10)}' | tail -n +2 | while read -r wt; do
+    git -C $wt rev-parse --git-dir >/dev/null 2>&1 || continue
+    last=$(git -C $wt log -1 --format=%ct 2>/dev/null)
+    age=$(( ( $(date +%s) - ${last:-0} ) / 86400 ))
+    nx=$(du -sk $wt/.nx 2>/dev/null | cut -f1)
+    if (( age >= STALE_DAYS )) && [[ -d $wt/.nx/cache ]] && ! in_use "$wt/"; then
+      remove "$wt/.nx/cache"
+    fi
+    dirty=$(git -C $wt status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+    unpushed=$(git -C $wt log --oneline HEAD --not --remotes 2>/dev/null | wc -l | tr -d ' ')
+    merged=no
+    git -C $wt merge-base --is-ancestor HEAD origin/main 2>/dev/null && merged=yes
+    (( age >= STALE_DAYS )) || [[ $merged == yes ]] && \
+      log "REVIEW worktree $wt  branch=$(git -C $wt rev-parse --abbrev-ref HEAD) age=${age}d merged=$merged dirty=$dirty unpushed=$unpushed size=$(du -sh $wt 2>/dev/null | cut -f1)"
+  done
+done
+
+after=$(free_kb)
+summary="removed $(human $removed_kb) of files (+ docker/brew/pnpm prunes); free now $(human $after)"
+log "=== done: $summary"
+(( DRY_RUN )) || osascript -e "display notification \"$summary\" with title \"dev-cleanup\"" >/dev/null 2>&1
+print -r -- "$summary; log: $LOG"

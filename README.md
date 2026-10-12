@@ -17,6 +17,11 @@ Simple script to install, update or remove my development environment.
   * Docker
 * Gnu Softwares
   * Sed (via homebrew)
+* Dev Cleanup (macOS)
+  * `~/.local/bin/dev-cleanup`, run weekly by launchd (Sundays 03:00)
+  * Removes only regenerable dev leftovers: stale agent temp dirs, Chrome code-sign clone, old Xcode DerivedData, dangling Docker images/build cache, brew/pnpm caches, idle Nx caches
+  * Never touches Docker volumes or worktrees; lists stale worktrees as `REVIEW` in `~/Library/Logs/dev-cleanup.log`
+  * `DRY_RUN=1 dev-cleanup` previews; also sets `NX_MAX_CACHE_SIZE=2GB`
 * Git Shortcuts
   * gs - git status
   * ga - git add

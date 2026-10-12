@@ -53,6 +53,10 @@ install)
     $PWD/scripts/bash-shortcuts.sh "${@: -1}"
   ;;
 
+  --devcleanup)
+    $PWD/scripts/dev-cleanup.sh "${@: -1}"
+  ;;
+
   *)
     printf "Installing...\n\n"
     $PWD/scripts/os-base-setup.sh "${@: -1}"
@@ -64,6 +68,7 @@ install)
     $PWD/scripts/git-shortcuts.sh "${@: -1}"
     $PWD/scripts/show-git-branch.sh "${@: -1}"
     $PWD/scripts/bash-shortcuts.sh "${@: -1}"
+    $PWD/scripts/dev-cleanup.sh "${@: -1}"
   ;;
 
   esac
@@ -110,6 +115,10 @@ remove)
     $PWD/scripts/remove-bash-shortcuts.sh
   ;;
 
+  --devcleanup)
+    $PWD/scripts/remove-dev-cleanup.sh
+  ;;
+
   *)
     printf "Removing...\n\n"
     $PWD/scripts/remove-vimrc.sh
@@ -121,6 +130,7 @@ remove)
     $PWD/scripts/remove-git-shortcuts.sh
     $PWD/scripts/remove-show-git-branch.sh
     $PWD/scripts/remove-bash-shortcuts.sh
+    $PWD/scripts/remove-dev-cleanup.sh
   ;;
 
   esac
