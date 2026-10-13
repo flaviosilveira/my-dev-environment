@@ -8,6 +8,15 @@ install_cli_pkg "vim" "vim"
 install_cli_pkg "mysql-client" "mysql-client"
 install_cli_pkg "universal-ctags" "universal-ctags"
 install_cli_pkg "go" "golang-go"
+install_cli_pkg "tmux" "tmux"
+install_cli_pkg "gh" "gh"
+install_cli_pkg "libpq" "postgresql-client"
+
+# Image paste in terminal apps (ai-room's console): macOS has it built in
+if [[ "$OS_TYPE" == "linux-ubuntu" ]]; then
+    install_cli_pkg "" "wl-clipboard"
+    install_cli_pkg "" "xclip"
+fi
 
 # Yazi file manager
 if ! command -v yazi &> /dev/null; then
@@ -54,24 +63,40 @@ else
     . "$HOME/.asdf/asdf.sh" 2>/dev/null || true
 fi
 
-# ASDF Plugins for Java and Android
+# asdf 0.16+ replaced `asdf global` with `asdf set -u`; Homebrew ships the new one
+asdf_global() {
+    asdf set -u "$@" 2>/dev/null || asdf global "$@"
+}
+
+# ASDF Plugins for Node, Java and Android
 printf "Configuring ASDF plugins...\n"
 if command -v asdf &> /dev/null; then
+    asdf plugin add nodejs 2>/dev/null || true
     asdf plugin add java 2>/dev/null || true
+
+    # Node via ASDF, with pnpm through corepack
+    if ! asdf list nodejs 2>/dev/null | grep -Eq '^[ *]*24\.'; then
+        printf "Installing Node 24 via ASDF...\n"
+        NODE_VERSION=$(asdf latest nodejs 24)
+        asdf install nodejs "$NODE_VERSION"
+        asdf_global nodejs "$NODE_VERSION"
+        corepack enable pnpm
+        asdf reshim nodejs
+    fi
     asdf plugin add android-sdk https://github.com/mise-plugins/mise-android-sdk.git 2>/dev/null || true
 
     # Java via ASDF
     if ! asdf list java &>/dev/null; then
         printf "Installing Java (openjdk-17.0.2) via ASDF...\n"
         asdf install java openjdk-17.0.2
-        asdf global java openjdk-17.0.2
+        asdf_global java openjdk-17.0.2
     fi
     
     # Android SDK via ASDF
     if ! asdf list android-sdk &>/dev/null; then
         printf "Installing Android SDK via ASDF...\n"
         asdf install android-sdk 19.0
-        asdf global android-sdk 19.0
+        asdf_global android-sdk 19.0
     fi
 fi
 
@@ -94,22 +119,8 @@ fi
 
 if [[ "$OS_TYPE" == "macos" ]]; then
     # Homebrew Cask for macOS
-    brew install --cask visual-studio-code postman slack dropbox google-chrome font-jetbrains-mono-nerd-font
-    add_to_profile "## Add Visual Studio Code (code) ###"
-    add_to_profile "export PATH='\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin'"
+    brew install --cask slack dropbox google-chrome font-jetbrains-mono-nerd-font
 elif [[ "$OS_TYPE" == "linux-ubuntu" ]]; then
-    # VS Code for Ubuntu
-    if ! command -v code &> /dev/null; then
-        printf "Installing VS Code...\n"
-        wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-        sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-        sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-        rm -f packages.microsoft.gpg
-        sudo apt install -y apt-transport-https
-        sudo apt update
-        sudo apt install -y code
-    fi
-
     # Google Chrome for Ubuntu
     if ! command -v google-chrome &> /dev/null; then
         printf "Installing Google Chrome...\n"
@@ -126,14 +137,6 @@ elif [[ "$OS_TYPE" == "linux-ubuntu" ]]; then
         fi
     fi
     
-    # Postman for Ubuntu
-    if ! command -v postman &> /dev/null; then
-        printf "Installing Postman...\n"
-        if command -v snap &> /dev/null; then
-            sudo snap install postman
-        fi
-    fi
-
     # Dropbox for Ubuntu
     if ! command -v dropbox &> /dev/null; then
          printf "Installing Dropbox...\n"

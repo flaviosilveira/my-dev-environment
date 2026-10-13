@@ -46,16 +46,17 @@ remove_cli_pkg "ripgrep" "ripgrep"
 remove_cli_pkg "vim" "vim"
 remove_cli_pkg "mysql-client" "mysql-client"
 remove_cli_pkg "universal-ctags" "universal-ctags"
+remove_cli_pkg "tmux" "tmux"
+remove_cli_pkg "gh" "gh"
+remove_cli_pkg "libpq" "postgresql-client"
 remove_cli_pkg "yazi" "yazi"
 remove_gui_app "yazi" # snap on linux
 
-remove_gui_app "visual-studio-code"
-remove_gui_app "code" # for linux
-remove_gui_app "postman"
 remove_gui_app "slack"
 remove_gui_app "dropbox"
 remove_gui_app "google-chrome"
 
+# VS Code is no longer installed; older setups left its PATH lines behind
 sed_inplace '/## Add Visual Studio Code (code) ###/d' "$PROFILE_FILE"
 sed_inplace '/Visual Studio Code.app/d' "$PROFILE_FILE"
 

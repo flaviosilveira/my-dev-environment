@@ -2,15 +2,17 @@
 
 Simple script to install, update or remove my development environment.
 
-* Homebrew
-* Softwares via Homebrew
+* Homebrew (macOS) or apt (Ubuntu)
+* Softwares
   * Ripgrep
   * Ctags
+  * tmux, GitHub CLI (gh), PostgreSQL client
+  * Node 24 and pnpm via asdf (pnpm through corepack); Java 17 and the Android SDK too
+  * Clipboard tools for image paste on Ubuntu (wl-clipboard, xclip)
   * Vim (With my Vimrc config, Vundle and Plugin [Airline, Surround, Emmet, CtrlP])
     * `v` browses files in Yazi (Enter opens Vim, `:q` goes back), `v file` edits the file
 * Yazi file manager, with `~/.config/yazi/yazi.toml` (wider preview, opens files in Vim)
   * Icons need a Nerd Font: installs JetBrainsMono Nerd Font (macOS); set it as the Terminal profile font
-  * Visual Studio Code
   * Dropbox
   * Slack
   * Mysql Cli
