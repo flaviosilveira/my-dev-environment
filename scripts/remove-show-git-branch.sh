@@ -13,13 +13,9 @@ fi
 
 # Clean up the function and prompt configuration surgically
 # We remove the block from the header until the closing brace of the function
-if [[ "$OS_TYPE" == "macos" ]]; then
-    sed -i '' '/## Show git branch ###/,/^}$/d' "$PROFILE_FILE"
-    sed -i '' '/setopt PROMPT_SUBST/d' "$PROFILE_FILE"
-    sed -i '' '/PROMPT=%9c/d' "$PROFILE_FILE"
-else
-    sed -i '/## Show git branch ###/,/^}$/d' "$PROFILE_FILE"
-    sed -i '/export PS1=.*parse_git_branch/d' "$PROFILE_FILE"
-fi
+sed_inplace '/## Show git branch ###/,/^}$/d' "$PROFILE_FILE"
+sed_inplace '/setopt PROMPT_SUBST/d' "$PROFILE_FILE"
+sed_inplace "/PROMPT='%9c/d" "$PROFILE_FILE"
+sed_inplace '/export PS1=.*parse_git_branch/d' "$PROFILE_FILE"
 
 printf "Show git branch configuration is gone\n\n"

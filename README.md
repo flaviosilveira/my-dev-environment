@@ -24,11 +24,12 @@ Simple script to install, update or remove my development environment.
   * Removes only regenerable dev leftovers: stale agent temp dirs, Chrome code-sign clone, old Xcode DerivedData, dangling Docker images/build cache, brew/pnpm caches, idle Nx caches
   * Never touches Docker volumes or worktrees; lists stale worktrees as `REVIEW` in `~/Library/Logs/dev-cleanup.log`
   * `DRY_RUN=1 dev-cleanup` previews; also sets `NX_MAX_CACHE_SIZE=2GB`
-* Git Shortcuts
-  * gs - git status
-  * ga - git add
-  * gc - git commit
-  * gpom - git push origin master
+* Shortcuts, in your shell's profile (`~/.zshrc` for zsh; `~/.bashrc` for bash on Linux, `~/.bash_profile` on macOS)
+  * Git: `gs` status, `ga` add, `gd` diff, `gc` commit, `gp` pull, `gch` checkout
+  * Shell: `ll` (ls -l), `v` (Yazi with no arguments, Vim with a file)
+  * Docker: `dps` (docker ps), `dcu` (compose up), `dcd` (compose down)
+  * The git branch in the prompt, in zsh or bash syntax to match
+  * `LC_ALL=en_US.UTF-8`; on Ubuntu the locale is generated first when missing
 
 ## Getting Started
 
@@ -58,7 +59,8 @@ You will also need to be able to execute some basic terminal commands like ls, c
 
 Follow the outputs in the screen! Maybe script requests your password.
 
-Git Shortcuts are based in Bash, using your .bash_profile file.
+The shortcuts go to the profile of your login shell (`$SHELL`), so they show
+up in the shell you actually use.
 
 ### Installing
 

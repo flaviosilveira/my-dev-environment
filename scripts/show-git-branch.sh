@@ -18,11 +18,10 @@ else
   add_to_profile "  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'"
   add_to_profile "}"
   
-  if [[ "$OS_TYPE" == "macos" ]]; then
+  if [[ "$PROFILE_FILE" == *.zshrc ]]; then
     add_to_profile "setopt PROMPT_SUBST"
     add_to_profile "PROMPT='%9c%{%F{green}%}\$(parse_git_branch)%{%F{none}%} $ '"
   else
-    # For Bash on Linux
     add_to_profile "export PS1='\[\033[01;32m\]\w\[\033[00m\]\[\033[01;33m\]\$(parse_git_branch)\[\033[00m\] $ '"
   fi
   

@@ -21,6 +21,12 @@ else
     # v browses files in Yazi; v <file> edits it in Vim
     add_to_profile "unalias v 2>/dev/null; function v { if [ \$# -eq 0 ] && command -v yazi >/dev/null; then yazi; else $VIM_PATH \"\$@\"; fi; }"
   fi
+  # A Ubuntu installed in another language lacks this locale, and every new
+  # shell would warn "setlocale: LC_ALL: cannot change locale".
+  if [[ "$OS_TYPE" == "linux-ubuntu" ]] && ! locale -a 2>/dev/null | grep -qi '^en_US\.utf-\?8$'; then
+    printf "Generating the en_US.UTF-8 locale...\n"
+    sudo locale-gen en_US.UTF-8
+  fi
   add_to_profile "export LC_ALL=en_US.UTF-8"
   
   add_to_profile "## Docker shortcuts ###"

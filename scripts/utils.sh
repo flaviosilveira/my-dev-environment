@@ -17,14 +17,14 @@ detect_os() {
 
 OS_TYPE=$(detect_os)
 
-# Profile Selection
+# Profile Selection: the user's login shell decides, not the OS. macOS
+# terminals start login shells, so bash there reads ~/.bash_profile.
 get_profile_file() {
-    if [[ "$OS_TYPE" == "macos" ]]; then
-        # Check for .zshrc first as it's the modern default
-        echo "$HOME/.zshrc"
-    else
-        echo "$HOME/.bashrc"
-    fi
+    case "$(basename "${SHELL:-}")" in
+        zsh) echo "$HOME/.zshrc" ;;
+        bash) if [[ "$OS_TYPE" == "macos" ]]; then echo "$HOME/.bash_profile"; else echo "$HOME/.bashrc"; fi ;;
+        *) if [[ "$OS_TYPE" == "macos" ]]; then echo "$HOME/.zshrc"; else echo "$HOME/.bashrc"; fi ;;
+    esac
 }
 
 PROFILE_FILE=$(get_profile_file)
