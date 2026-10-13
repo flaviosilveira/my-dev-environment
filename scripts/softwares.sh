@@ -135,7 +135,8 @@ if command -v npm &> /dev/null; then
 fi
 if ! command -v agy &> /dev/null && [ ! -x "$HOME/.local/bin/agy" ]; then
     printf "Installing the Antigravity CLI (agy)...\n"
-    curl -fsSL https://antigravity.google/cli/install.sh | bash
+    # The server may answer gzipped even unasked; --compressed decodes it
+    curl -fsSL --compressed https://antigravity.google/cli/install.sh | bash
 fi
 add_to_profile "## Local bin (agy, db-ro) ###"
 add_to_profile "export PATH=\"\$HOME/.local/bin:\$PATH\""
