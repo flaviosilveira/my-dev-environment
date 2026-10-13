@@ -33,47 +33,51 @@ Simple script to install, update or remove my development environment.
 
 ## Getting Started
 
-### Install Brew
-./scripts/brew.sh
+Works on macOS and Ubuntu. On macOS everything comes from Homebrew, which the
+install sets up first. Ubuntu has no Homebrew: CLI tools come from apt, Docker
+and Chrome from their vendors' apt repositories, Slack, Yazi and the AWS CLI
+from snap, and Node, Java and the Android SDK from asdf.
 
-### Source
-source ~/.zprofile
+### Before you start
+
+* macOS: update the system and install the Xcode command line tools
+  (`xcode-select --install`).
+* Ubuntu: `sudo apt update && sudo apt install -y git curl`.
 
 ### Install
-./set-environment.sh install
-**Use -f as last parameter to force re-install**
 
-### Source Again
-source ~/.zprofile
+```bash
+git clone https://github.com/flaviosilveira/my-dev-environment.git ~/dev/my-dev-environment
+cd ~/dev/my-dev-environment
+./set-environment.sh install
+```
+
+Follow the output: some steps ask for your password. Then open a new terminal,
+or reload your profile (`source ~/.zshrc`, or `source ~/.bashrc` on Ubuntu). On
+Ubuntu, log out and back in once so Docker works without `sudo`.
+
+Add `-f` as the last parameter to force a reinstall of what is already there.
+
+### One part only
+
+```bash
+./set-environment.sh install --softwares
+./set-environment.sh remove --docker
+```
+
+Parts: `--base`, `--softwares`, `--vimrc`, `--yazi`, `--docker`,
+`--gnusoftwares`, `--gitshortcuts`, `--showgitbranch`, `--bashshortcuts`,
+`--devcleanup`.
 
 ### Remove
+
+```bash
 ./set-environment.sh remove
-
-### Just one option
-Example: ./set-environment.sh remove --brew
-
-### Prerequisites
-
-Make sure you are able to do a git clone command.
-You will also need to be able to execute some basic terminal commands like ls, cp, chmod and so on...
-
-Follow the outputs in the screen! Maybe script requests your password.
+```
 
 The shortcuts go to the profile of your login shell (`$SHELL`), so they show
 up in the shell you actually use.
 
-### Installing
-
-- Git clone
-- Execute the set-environment.sh
-
 ## Contributing
 
 Feel free if you wish to contribute here.
-
-# Instructions when in a new Mac
-
-* Update SO to the last version possible
-* Install XCode cli
-* Clone this project
-* Run ./set-environment --install
