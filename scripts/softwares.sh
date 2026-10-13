@@ -139,7 +139,8 @@ if ! command -v agy &> /dev/null && [ ! -x "$HOME/.local/bin/agy" ]; then
     curl -fsSL --compressed https://antigravity.google/cli/install.sh | bash
 fi
 add_to_profile "## Local bin (agy, db-ro) ###"
-add_to_profile "export PATH=\"\$HOME/.local/bin:\$PATH\""
+# Guarded, so sourcing the profile again does not stack copies on PATH
+add_to_profile "case \":\$PATH:\" in *\":\$HOME/.local/bin:\"*) ;; *) export PATH=\"\$HOME/.local/bin:\$PATH\" ;; esac"
 
 if [[ "$OS_TYPE" == "macos" ]]; then
     # Homebrew Cask for macOS
