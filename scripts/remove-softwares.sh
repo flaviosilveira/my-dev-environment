@@ -49,6 +49,7 @@ remove_cli_pkg "universal-ctags" "universal-ctags"
 remove_cli_pkg "tmux" "tmux"
 remove_cli_pkg "gh" "gh"
 remove_cli_pkg "libpq" "postgresql-client"
+remove_cli_pkg "azure-cli" "azure-cli"
 remove_cli_pkg "yazi" "yazi"
 remove_gui_app "yazi" # snap on linux
 

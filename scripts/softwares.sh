@@ -38,6 +38,16 @@ if ! command -v aws &> /dev/null; then
     fi
 fi
 
+# Azure CLI
+if ! command -v az &> /dev/null; then
+    if [[ "$OS_TYPE" == "macos" ]]; then
+        brew install azure-cli
+    elif [[ "$OS_TYPE" == "linux-ubuntu" ]]; then
+        printf "Installing Azure CLI from Microsoft's apt repository...\n"
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    fi
+fi
+
 # ASDF Installation
 if ! command -v asdf &> /dev/null; then
     if [[ "$OS_TYPE" == "macos" ]]; then

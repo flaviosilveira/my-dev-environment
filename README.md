@@ -6,7 +6,7 @@ Simple script to install, update or remove my development environment.
 * Softwares
   * Ripgrep
   * Ctags
-  * tmux, GitHub CLI (gh), PostgreSQL client
+  * tmux, GitHub CLI (gh), PostgreSQL client, Azure CLI (az)
   * Node 24 and pnpm via asdf (pnpm through corepack); Java 17 and the Android SDK too
   * Clipboard tools for image paste on Ubuntu (wl-clipboard, xclip)
   * Vim (With my Vimrc config, Vundle and Plugin [Airline, Surround, Emmet, CtrlP])
@@ -36,7 +36,8 @@ Simple script to install, update or remove my development environment.
 Works on macOS and Ubuntu. On macOS everything comes from Homebrew, which the
 install sets up first. Ubuntu has no Homebrew: CLI tools come from apt, Docker
 and Chrome from their vendors' apt repositories, Slack, Yazi and the AWS CLI
-from snap, and Node, Java and the Android SDK from asdf.
+from snap, the Azure CLI from Microsoft's installer, and Node, Java and the
+Android SDK from asdf.
 
 ### Before you start
 
