@@ -53,6 +53,11 @@ remove_cli_pkg "azure-cli" "azure-cli"
 remove_cli_pkg "yazi" "yazi"
 remove_gui_app "yazi" # snap on linux
 
+if command -v npm &>/dev/null; then
+    npm uninstall -g @anthropic-ai/claude-code @openai/codex 2>/dev/null
+fi
+rm -f "$HOME/.local/bin/agy"
+
 remove_gui_app "slack"
 remove_gui_app "dropbox"
 remove_gui_app "google-chrome"

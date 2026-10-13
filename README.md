@@ -9,6 +9,7 @@ Simple script to install, update or remove my development environment.
   * tmux, GitHub CLI (gh), PostgreSQL client, Azure CLI (az)
   * Node 24 and pnpm via asdf (pnpm through corepack); Java 17 and the Android SDK too
   * Clipboard tools for image paste on Ubuntu (wl-clipboard, xclip)
+  * AI coding agents: Claude Code and Codex (npm, on asdf's Node) and the Antigravity CLI (agy, its official installer); log in to each once
   * Vim (With my Vimrc config, Vundle and Plugin [Airline, Surround, Emmet, CtrlP])
     * `v` browses files in Yazi (Enter opens Vim, `:q` goes back), `v file` edits the file
 * Yazi file manager, with `~/.config/yazi/yazi.toml` (wider preview, opens files in Vim)

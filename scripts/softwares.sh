@@ -127,6 +127,19 @@ else
     fi
 fi
 
+# AI coding agents: Claude Code and Codex on asdf's Node, agy from its own installer
+if command -v npm &> /dev/null; then
+    command -v claude &> /dev/null || { printf "Installing Claude Code...\n"; npm install -g @anthropic-ai/claude-code; }
+    command -v codex &> /dev/null || { printf "Installing Codex...\n"; npm install -g @openai/codex; }
+    asdf reshim nodejs 2>/dev/null || true
+fi
+if ! command -v agy &> /dev/null && [ ! -x "$HOME/.local/bin/agy" ]; then
+    printf "Installing the Antigravity CLI (agy)...\n"
+    curl -fsSL https://antigravity.google/cli/install.sh | bash
+fi
+add_to_profile "## Local bin (agy, db-ro) ###"
+add_to_profile "export PATH=\"\$HOME/.local/bin:\$PATH\""
+
 if [[ "$OS_TYPE" == "macos" ]]; then
     # Homebrew Cask for macOS
     brew install --cask slack dropbox google-chrome font-jetbrains-mono-nerd-font
